@@ -12816,6 +12816,26 @@ in modules // {
     };
   };
 
+  ntfy = buildPythonPackage rec {
+    version = "1.2.0";
+    name = "ntfy-${version}";
+    src = pkgs.fetchFromGitHub {
+      owner = "dschep";
+      repo = "ntfy";
+      rev = "v${version}";
+      sha256 = "0yjxwisxpxy3vpnqk9nw5k3db3xx6wyf6sk1px9m94s30glcq2cc";
+    };
+
+    propagatedBuildInputs = with self; [ appdirs pyyaml requests dbus ];
+
+    meta = {
+      description = "A utility for sending notifications, on demand and when commands finish";
+      homepage = http://ntfy.rtfd.org/;
+      license = licenses.gpl3;
+      maintainers = with maintainers; [ kamilchm ];
+    };
+  };
+
   ntplib = buildPythonPackage rec {
     name = "ntplib-0.3.2";
     src = pkgs.fetchurl {
@@ -18410,6 +18430,24 @@ in modules // {
 
     meta = with stdenv.lib; {
       homepage = "http://haystacksearch.org/";
+    };
+  };
+
+  geoalchemy2 = buildPythonPackage rec {
+    name = "GeoAlchemy2-${version}";
+    version = "0.3.0.dev1";
+
+    src = pkgs.fetchurl {
+      url = "https://pypi.python.org/packages/source/G/GeoAlchemy2/${name}.tar.gz";
+      sha256 = "1j95p860ikpcpcirs5791yjpy8rf18zsz7vvsdy6v3x32hkim0k6";
+    };
+
+    propagatedBuildInputs = with self ; [ sqlalchemy shapely ];
+
+    meta = {
+      homepage =  http://geoalchemy.org/;
+      license = licenses.mit;
+      description = "Toolkit for working with spatial databases";
     };
   };
 
