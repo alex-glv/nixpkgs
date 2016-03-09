@@ -2,11 +2,11 @@
 
 stdenv.mkDerivation rec {
   name = "kismet-${version}";
-  version = "2013-03-R1b";
+  version = "2016-01-R1";
 
   src = fetchurl {
     url = "http://www.kismetwireless.net/code/${name}.tar.xz";
-    sha256 = "0b3wabdkh0p3msphihm4kz5yw02p27ska5lfippfcyn6z1z4svb3";
+    sha256 = "1fbn8znaiibzi7d2jrqgwnhg99w8ga3vxk1687ab4dk8k6b1fbqn";
   };
 
   buildInputs = [ pkgconfig libpcap ncurses expat pcre libnl ];

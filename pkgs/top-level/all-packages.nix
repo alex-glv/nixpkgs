@@ -10728,6 +10728,10 @@ let
 
   gocode = goPackages.gocode.bin // { outputs = [ "bin" ]; };
 
+  godef = goPackages.godef.bin // { outputs = [ "bin" ]; };
+
+  hugo = goPackages.hugo.bin // { outputs = [ "bin" ]; };
+
   kgocode = callPackage ../applications/misc/kgocode {
     inherit (pkgs.kde4) kdelibs;
   };
