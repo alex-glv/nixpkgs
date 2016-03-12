@@ -676,6 +676,8 @@ let
 
   aws_mturk_clt = callPackage ../tools/misc/aws-mturk-clt { };
 
+  awstats = callPackage ../tools/system/awstats { };
+
   axel = callPackage ../tools/networking/axel { };
 
   azureus = callPackage ../tools/networking/p2p/azureus { };
@@ -1225,6 +1227,10 @@ let
   };
 
   brotli = callPackage ../tools/compression/brotli { };
+
+  brotliUnstable = callPackage ../tools/compression/brotli/unstable.nix { };
+
+  libbrotli = callPackage ../development/libraries/libbrotli { };
 
   biosdevname = callPackage ../tools/networking/biosdevname { };
 
@@ -1807,6 +1813,8 @@ let
 
   go-pup = goPackages.pup.bin // { outputs = [ "bin" ]; };
 
+  go-upower-notify = goPackages.upower-notify.bin // { outputs = [ "bin" ]; };
+
   googleAuthenticator = callPackage ../os-specific/linux/google-authenticator { };
 
   google-cloud-sdk = callPackage ../tools/admin/google-cloud-sdk { };
@@ -2130,7 +2138,9 @@ let
 
   jpegoptim = callPackage ../applications/graphics/jpegoptim { };
 
-  jq = callPackage ../development/tools/jq {};
+  jq = callPackage ../development/tools/jq { };
+
+  jo = callPackage ../development/tools/jo { };
 
   jscoverage = callPackage ../development/tools/misc/jscoverage { };
 
@@ -2763,7 +2773,8 @@ let
     owncloud70
     owncloud80
     owncloud81
-    owncloud82;
+    owncloud82
+    owncloud90;
 
   owncloudclient = callPackage ../applications/networking/owncloud-client { };
 
@@ -3001,6 +3012,8 @@ let
 
   pydb = callPackage ../development/tools/pydb { };
 
+  pygmentex = callPackage ../tools/typesetting/pygmentex { };
+
   pystringtemplate = callPackage ../development/python-modules/stringtemplate { };
 
   pythonDBus = dbus_python;
@@ -3138,6 +3151,8 @@ let
   rockbox_utility = callPackage ../tools/misc/rockbox-utility { };
 
   rosegarden = callPackage ../applications/audio/rosegarden { };
+
+  rowhammer-test = callPackage ../tools/system/rowhammer-test { };
 
   rpPPPoE = callPackage ../tools/networking/rp-pppoe { };
 
@@ -3543,6 +3558,8 @@ let
 
   ufraw = callPackage ../applications/graphics/ufraw { };
 
+  uget = callPackage ../tools/networking/uget { };
+
   umlet = callPackage ../tools/misc/umlet { };
 
   unetbootin = callPackage ../tools/cd-dvd/unetbootin { };
@@ -3879,6 +3896,8 @@ let
 
   xmpppy = pythonPackages.xmpppy;
 
+  xiccd = callPackage ../tools/misc/xiccd { };
+
   xorriso = callPackage ../tools/cd-dvd/xorriso { };
 
   xpf = callPackage ../tools/text/xml/xpf {
@@ -3900,6 +3919,8 @@ let
   yank = callPackage ../tools/misc/yank { };
 
   yaml-merge = callPackage ../tools/text/yaml-merge { };
+
+  yeshup = callPackage ../tools/system/yeshup { };
 
   # To expose more packages for Yi, override the extraPackages arg.
   yi = callPackage ../applications/editors/yi/wrapper.nix { };
@@ -4014,6 +4035,10 @@ let
   avra = callPackage ../development/compilers/avra { };
 
   bigloo = callPackage ../development/compilers/bigloo { };
+
+  boo = callPackage ../development/compilers/boo {
+    inherit (gnome) gtksourceview;
+  };
 
   colm = callPackage ../development/compilers/colm { };
 
@@ -5109,6 +5134,8 @@ let
     ocaml = ocaml_3_08_0;
   };
 
+  rgbds = callPackage ../development/compilers/rgbds { };
+
   rtags = callPackage ../development/tools/rtags/default.nix {};
 
   rustcMaster = callPackage ../development/compilers/rustc/head.nix {};
@@ -5226,6 +5253,8 @@ let
   webdsl = callPackage ../development/compilers/webdsl { };
 
   win32hello = callPackage ../development/compilers/visual-c++/test { };
+
+  wla-dx = callPackage ../development/compilers/wla-dx { };
 
   wrapCCWith = ccWrapper: libc: extraBuildCommands: baseCC: ccWrapper {
     nativeTools = stdenv.cc.nativeTools or false;
@@ -6367,7 +6396,9 @@ let
 
   acl = callPackage ../development/libraries/acl { };
 
-  activemq = callPackage ../development/libraries/apache-activemq { };
+  activemq = callPackage ../development/libraries/apache-activemq/5.8.nix { };
+
+  activemq512 = callPackage ../development/libraries/apache-activemq/5.12.nix { };
 
   adns = callPackage ../development/libraries/adns { };
 
@@ -6598,6 +6629,12 @@ let
   dbus_java       = callPackage ../development/libraries/java/dbus-java { };
   dbus_python     = pythonPackages.dbus;
 
+  dbus-sharp-1_0 = callPackage ../development/libraries/dbus-sharp/dbus-sharp-1.0.nix { };
+  dbus-sharp-2_0 = callPackage ../development/libraries/dbus-sharp { };
+
+  dbus-sharp-glib-1_0 = callPackage ../development/libraries/dbus-sharp-glib/dbus-sharp-glib-1.0.nix { };
+  dbus-sharp-glib-2_0 = callPackage ../development/libraries/dbus-sharp-glib { };
+
   # Should we deprecate these? Currently there are many references.
   dbus_tools = pkgs.dbus.tools;
   dbus_libs = pkgs.dbus.libs;
@@ -6811,6 +6848,8 @@ let
 
   giblib = callPackage ../development/libraries/giblib { };
 
+  gio-sharp = callPackage ../development/libraries/gio-sharp { };
+
   libgit2 = callPackage ../development/libraries/git2 { };
 
   libgit2_0_21 = callPackage ../development/libraries/git2/0.21.nix { };
@@ -7021,6 +7060,8 @@ let
 
   pangox_compat = callPackage ../development/libraries/pangox-compat { };
 
+  gdata-sharp = callPackage ../development/libraries/gdata-sharp { };
+
   gdk_pixbuf = callPackage ../development/libraries/gdk-pixbuf { };
 
   gnome-sharp = callPackage ../development/libraries/gnome-sharp {};
@@ -7042,11 +7083,21 @@ let
     gtksharp = gtk-sharp;
   };
 
-  gtk-sharp = callPackage ../development/libraries/gtk-sharp-2 {
+  gtk-sharp-2_0 = callPackage ../development/libraries/gtk-sharp/2.0.nix {
     inherit (gnome) libglade libgtkhtml gtkhtml
               libgnomecanvas libgnomeui libgnomeprint
               libgnomeprintui GConf gnomepanel;
   };
+
+  gtk-sharp-3_0 = callPackage ../development/libraries/gtk-sharp/3.0.nix {
+    inherit (gnome) libglade libgtkhtml gtkhtml
+              libgnomecanvas libgnomeui libgnomeprint
+              libgnomeprintui GConf gnomepanel;
+  };
+
+  gtk-sharp = gtk-sharp-2_0;
+
+  gtk-sharp-beans = callPackage ../development/libraries/gtk-sharp-beans { };
 
   gtkspell = callPackage ../development/libraries/gtkspell { };
 
@@ -7542,6 +7593,7 @@ let
 
   libgpod = callPackage ../development/libraries/libgpod {
     inherit (pkgs.pythonPackages) mutagen;
+    monoSupport = false;
   };
 
   libgsystem = callPackage ../development/libraries/libgsystem { };
@@ -7803,8 +7855,6 @@ let
   libosmpbf = callPackage ../development/libraries/libosmpbf {};
 
   libotr = callPackage ../development/libraries/libotr { };
-
-  libotr_3_2 = callPackage ../development/libraries/libotr/3.2.nix { };
 
   libp11 = callPackage ../development/libraries/libp11 { };
 
@@ -8158,6 +8208,10 @@ let
     qt = qt4;
   };
 
+  mono-addins = callPackage ../development/libraries/mono-addins { };
+
+  mono-zeroconf = callPackage ../development/libraries/mono-zeroconf { };
+
   movit = callPackage ../development/libraries/movit { };
 
   mosquitto = callPackage ../servers/mqtt/mosquitto { };
@@ -8199,6 +8253,8 @@ let
   mythes = callPackage ../development/libraries/mythes { };
 
   nanomsg = callPackage ../development/libraries/nanomsg { };
+
+  notify-sharp = callPackage ../development/libraries/notify-sharp { };
 
   ncurses = callPackage ../development/libraries/ncurses { };
 
@@ -8806,6 +8862,8 @@ let
   taglib_1_9 = callPackage ../development/libraries/taglib/1.9.nix { };
 
   taglib_extras = callPackage ../development/libraries/taglib-extras { };
+
+  taglib-sharp = callPackage ../development/libraries/taglib-sharp { };
 
   talloc = callPackage ../development/libraries/talloc {
     python = python2;
@@ -10565,6 +10623,8 @@ let
                           # callPackage ../os-specific/linux/nvidia-x11/beta.nix { };
     nvidia_x11           = callPackage ../os-specific/linux/nvidia-x11 { };
 
+    rtl8723bs = callPackage ../os-specific/linux/rtl8723bs { };
+
     rtl8812au = callPackage ../os-specific/linux/rtl8812au { };
 
     openafsClient = callPackage ../servers/openafs-client { };
@@ -11583,6 +11643,11 @@ let
     ffmpeg = ffmpeg_1;
   };
 
+  banshee = callPackage ../applications/audio/banshee {
+    gconf = pkgs.gnome.GConf;
+    libgpod = pkgs.libgpod.override { monoSupport = true; };
+  };
+
   batik = callPackage ../applications/graphics/batik { };
 
   batti = callPackage ../applications/misc/batti { };
@@ -12376,7 +12441,7 @@ let
 
   gitAndTools = recurseIntoAttrs (callPackage ../applications/version-management/git-and-tools {});
 
-  inherit (gitAndTools) git gitFull gitSVN git-cola svn2git git-radar transcrypt;
+  inherit (gitAndTools) git gitFull gitSVN git-cola svn2git git-radar transcrypt git-crypt;
 
   gitMinimal = git.override {
     withManual = false;
@@ -14771,6 +14836,8 @@ let
 
   rili = callPackage ../games/rili { };
 
+  rimshot = callPackage ../games/rimshot { love = love_0_7; };
+
   rogue = callPackage ../games/rogue { };
 
   saga = callPackage ../applications/gis/saga { };
@@ -15258,6 +15325,8 @@ let
       boost = pkgs.boost.override { python=python3; };
       libyamlcpp = callPackage ../development/libraries/libyaml-cpp { makePIC=true; boost=boost; };
     };
+
+    colord-kde = callPackage ../tools/misc/colord-kde/0.5.nix {};
 
     dfilemanager = callPackage ../applications/misc/dfilemanager { };
 
@@ -15854,6 +15923,8 @@ let
 
   epson-escpr = callPackage ../misc/drivers/epson-escpr { };
 
+  epson_201207w = callPackage ../misc/drivers/epson_201207w { };
+
   gutenprint = callPackage ../misc/drivers/gutenprint { };
 
   gutenprintBin = callPackage ../misc/drivers/gutenprint/bin.nix { };
@@ -15892,7 +15963,9 @@ let
 
   faust1 = callPackage ../applications/audio/faust/faust1.nix { };
 
-  faust2 = callPackage ../applications/audio/faust/faust2.nix { };
+  faust2 = callPackage ../applications/audio/faust/faust2.nix {
+    llvm = llvm_37;
+  };
 
   faust2alqt = callPackage ../applications/audio/faust/faust2alqt.nix { };
 
