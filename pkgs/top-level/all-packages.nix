@@ -497,6 +497,7 @@ let
   };
 
   actdiag = pythonPackages.actdiag;
+  docker_compose = pythonPackages.docker_compose;
 
   actkbd = callPackage ../tools/system/actkbd { };
 
